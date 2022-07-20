@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Kernel\Plugin\ValidationApi\Rules;
+namespace ValidationApi\Rules;
 
 class General
 {

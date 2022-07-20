@@ -1,14 +1,17 @@
 <?php
+define("AJAX_ERROR", 128);
+define("LANGUAGE_ERROR_RU", 256);
+define("DEFAULT_FORMAT_ERROR", 8);
+define("WEB_FORMAT_ERROR", 500);
 
-namespace App\Kernel\Plugin\ValidationApi;
+namespace ValidationApi;
 
-use App\Kernel\Plugin\ValidationApi\Rules\Custom;
-use App\Kernel\Plugin\ValidationApi\Rules\Exist;
-use App\Kernel\Plugin\ValidationApi\Rules\General;
+use ValidationApi\Rules\Custom;
+use ValidationApi\Rules\Exist;
+use ValidationApi\Rules\General;
 use Illuminate\Http\Request;
 
 use Exception;
-use Illuminate\Http\Response;
 
 class ValidationApi
 {
@@ -92,7 +95,7 @@ class ValidationApi
      * @return string format JSON 
      */
 
-    public static function validate(Request $request, $rules, $format = DEFAULT_FORMAT_ERROR_DVOR24, $custom = '')
+    public static function validate(Request $request, $rules, $format = DEFAULT_FORMAT_ERROR, $custom = '')
     {
         self::$languageRus = include __DIR__ . "/Language/LibraryRus.php";
         self::$languageEn = include __DIR__ . "/Language/LibraryEn.php";
@@ -266,7 +269,7 @@ class ValidationApi
             $replaceEn = $attributeEn;
         }
 
-        getResponse([
+        (new Settings)->getResponse([
             self::setAttribute($search, $replaceEn, $messageEn),
             self::setAttribute($search, $replaceRus, $messageRus)
         ], 400, $format);

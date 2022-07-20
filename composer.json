@@ -1,0 +1,20 @@
+{
+    "name": "iluaivanov/validationapi",
+    "description": "The validator allows you to simplify the work and give the answer to the user in the desired format",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "illuminate/http": "^8.8"
+    },
+    "authors": [
+        {
+            "name": "Ilya Ivanov",
+            "email": "iis431471@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ValidationApi\\":"src/"
+        }
+    }
+}
